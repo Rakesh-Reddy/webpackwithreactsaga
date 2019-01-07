@@ -2,14 +2,19 @@ const webpack = require('webpack');
 
 
 module.exports = {
-    entry: './src/index.js',
+    entry: ['babel-polyfill','./src/index.js'],
     module: {
         rules: [
           {
             test: /\.(js|jsx)$/,
             exclude: /node_modules/,
             use: ['babel-loader']
-          }
+          },
+          {
+            test: /\.css$/,
+            exclude: /node_modules/,
+            loaders: ['style-loader', 'css-loader']
+            }
         ]
       },
       resolve: {
